@@ -2,26 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Testing : MonoBehaviour
+public class PlayerController01 : MonoBehaviour 
+
 {
-    public float score = 7;
-    public float speed = 10.0f;
+    public float speed;
+    public float xRange;
+    public float yRange;
 
     // Start is called before the first frame update
     void Start()
     {
-
+      
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //Keep Player within xRange (left and Right sides)
 
+
+        //Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
         Debug.Log(moveHorizontal);
 
+        //Store the current vertical input in the float moveVertical.
         float moveVertical = Input.GetAxis("Vertical");
-
+        
+        //Use the two store to create a new Vector2 variable movement.
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
         transform.Translate(movement * speed * Time.deltaTime);
