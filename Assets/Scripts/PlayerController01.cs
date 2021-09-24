@@ -15,11 +15,18 @@ public class PlayerController01 : MonoBehaviour
       
     }
 
+    private void LateUpdate()
+    {
+        / Keep Player within xRange(left and Right sides)
+        if (transform.position.x > xRange)
+        {
+            transform.position = new Vector2(xRange, transform.position.y);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {   
-        //Keep Player within xRange (left and Right sides)
-
 
         //Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
