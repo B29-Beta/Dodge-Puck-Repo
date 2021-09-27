@@ -17,10 +17,23 @@ public class PlayerController01 : MonoBehaviour
 
     private void LateUpdate()
     {
-        / Keep Player within xRange(left and Right sides)
+        //Keep Player within xRange(left and Right sides);
         if (transform.position.x > xRange)
         {
             transform.position = new Vector2(xRange, transform.position.y);
+        }
+        if(transform.position.x < -xRange)
+        {
+            transform.position = new Vector2(-xRange, transform.position.y);
+        }
+
+        if (transform.position.y > yRange)
+        {
+            transform.position = new Vector2(transform.position.x, yRange);
+        }
+        if (transform.position.y < -yRange)
+        {
+            transform.position = new Vector2(transform.position.x, -yRange);
         }
     }
 
