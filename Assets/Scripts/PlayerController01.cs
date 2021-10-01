@@ -8,6 +8,7 @@ public class PlayerController01 : MonoBehaviour
     public float speed;
     public float xRange;
     public float yRange;
+    public GameObject Puck;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,11 @@ public class PlayerController01 : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
+        Instantiate(Puck,new Vector2 (Random.Range(-xRange,xRange), Random.Range(-yRange,yRange)), Quaternion.identity);
+
+
+        //Instantiate(Enemy, new Vector3(Random.Range(-2.0F, 2.0F), Random.Range(-2.0F, 2.0F), 0), Quaternion.identity);
 
         //Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
