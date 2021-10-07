@@ -22,5 +22,23 @@ public class PuckController : MonoBehaviour
         {
             transform.Translate(transform.up * puckSpeed * Time.deltaTime);
         }
+        if (moveDirection == 1)
+        {
+            transform.Translate(transform.right * puckSpeed * Time.deltaTime);
+        }
+        if (moveDirection == 2)
+        {
+            transform.Translate(transform.up * -puckSpeed * Time.deltaTime);
+        }
+        if (moveDirection == 3)
+        {
+            transform.Translate(transform.right * -puckSpeed * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("WALLLLLLLLLLLLLLLLLL");
+        puckSpeed = -puckSpeed;
     }
 }
