@@ -43,7 +43,6 @@ public class PlayerController01 : MonoBehaviour
     {
         Instantiate(Puck,new Vector2 (Random.Range(-xRange,xRange), Random.Range(-yRange,yRange)), Quaternion.identity);
 
-
         //Instantiate(Enemy, new Vector3(Random.Range(-2.0F, 2.0F), Random.Range(-2.0F, 2.0F), 0), Quaternion.identity);
 
         //Store the current horizontal input in the float moveHorizontal.

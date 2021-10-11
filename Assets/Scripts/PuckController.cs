@@ -11,7 +11,7 @@ public class PuckController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveDirection = direction[Random.Range(0, 4)];
+        moveDirection = direction[Random.Range(0,4)];
         Debug.Log("moveDirection = " + moveDirection);
     }
 
@@ -22,14 +22,17 @@ public class PuckController : MonoBehaviour
         {
             transform.Translate(transform.up * puckSpeed * Time.deltaTime);
         }
+
         if (moveDirection == 1)
         {
             transform.Translate(transform.right * puckSpeed * Time.deltaTime);
         }
+
         if (moveDirection == 2)
         {
             transform.Translate(transform.up * -puckSpeed * Time.deltaTime);
         }
+
         if (moveDirection == 3)
         {
             transform.Translate(transform.right * -puckSpeed * Time.deltaTime);
@@ -38,7 +41,7 @@ public class PuckController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("WALLLLLLLLLLLLLLLLLL");
+        Debug.Log("WALLLLLLLLLLLLLLLLLLLL");
         puckSpeed = -puckSpeed;
     }
 }
