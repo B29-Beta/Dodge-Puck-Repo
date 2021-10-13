@@ -9,11 +9,12 @@ public class PlayerController01 : MonoBehaviour
     public float xRange;
     public float yRange;
     public GameObject Puck;
+    public GameObject Blocky;
 
     // Start is called before the first frame update
     void Start()
     {
-      
+        Instantiate(Blocky, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
     }
 
     private void LateUpdate()
@@ -62,5 +63,14 @@ public class PlayerController01 : MonoBehaviour
         //    Debug.Log(Input.GetAxis("Horizontal"));
         //    transform.Translate(Vector2.right * speed * Time.deltaTime);
         //}
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Blocky"))
+        {
+            Destroy(other.gameObject);
+            Debug.Log("Hit Blocky!");
+        }
     }
 }
