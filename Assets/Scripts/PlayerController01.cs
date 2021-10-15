@@ -42,13 +42,13 @@ public class PlayerController01 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Instantiate(Puck,new Vector2 (Random.Range(-xRange,xRange), Random.Range(-yRange,yRange)), Quaternion.identity);
+        //Instantiate(Puck,new Vector2 (Random.Range(-xRange,xRange), Random.Range(-yRange,yRange)), Quaternion.identity);
 
         //Instantiate(Puck, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
 
         //Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
-        Debug.Log(moveHorizontal);
+        //Debug.Log(moveHorizontal);
 
         //Store the current vertical input in the float moveVertical.
         float moveVertical = Input.GetAxis("Vertical");
