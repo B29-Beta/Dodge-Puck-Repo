@@ -18,6 +18,7 @@ public class PlayerController01 : MonoBehaviour
     void Start()
     {
         Instantiate(Blocky, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
+        
     }
 
     private void LateUpdate()
@@ -72,16 +73,17 @@ public class PlayerController01 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Blocky")) Instantiate(Blocky, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
-        Instantiate(Puck, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
-
+        if (other.gameObject.CompareTag("Blocky")) 
         {
             Destroy(other.gameObject);
+
+            Instantiate(Blocky, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
+            Instantiate(Puck, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
+
             Debug.Log("Hit Blocky!");
-            Destroy(other.gameObject);
             //Score += 5;
             //Debug.Log("Your Score: " + Score);
-
+            scoreText.GetComponent<ScoreKeeper>().scoreValue = 0;
             scoreText.GetComponent<ScoreKeeper>().UpdateScore();
         }
 
@@ -97,10 +99,27 @@ public class PlayerController01 : MonoBehaviour
     public void NewGame()
     {
         Debug.Log("It's a new game!");
+        //Destroy all Pucks
         GameObject[] allPucks = GameObject.FindGameObjectsWithTag("Puck");
         foreach (GameObject dude in allPucks)
             GameObject.Destroy(dude);
+        //Destroy all Blocky's
+        GameObject[] allBlockys = GameObject.FindGameObjectsWithTag("Blocky");
+        foreach (GameObject dude in allBlockys)
+            GameObject.Destroy(dude);
+
         transform.position = new Vector2(0, 0);
+        
+        Instantiate(Blocky, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
+        Instantiate(Puck, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
+        
+        gameOverText.SetActive(false);
+        Time.timeScale = 1;
+
+        //set score to zero
+        scoreText.GetComponent<ScoreKeeper>().scoreValue = 0;
+        scoreText.GetComponent<ScoreKeeper>().UpdateScore();
+        Debug.Log("score: " + scoreText.GetComponent<ScoreKeeper>().scoreValue);
     }
 
 }
